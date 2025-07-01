@@ -4,14 +4,14 @@ import MeetingPage from "./Components/MeetingsPage";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<CalendarApp />} />
-          <Route path="/meeting/:id" element={<MeetingPage />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+<BrowserRouter basename="/Interview-Schedulle-Calender">
+      <Routes>
+        <Route path="/" element={<CalendarApp />} />
+        <Route path="/meeting/:id" element={<MeetingPage />} />
+          <Route path="*" element={<NotFound />} />
+
+      </Routes>
+    </BrowserRouter>
   );
 }
 

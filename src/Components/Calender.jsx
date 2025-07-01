@@ -93,7 +93,7 @@ export default function CalendarApp() {
                     <button
                       onClick={() =>
                         window.open(
-                          `/meeting/${m.id}`,
+                          `${import.meta.env.BASE_URL}meeting/${m.id}`,
                           "popup",
                           "width=300,height=300,top=100,left=100"
                         )

@@ -5,7 +5,7 @@ import NotFound from "./Components/NotFound";
 
 function App() {
   return (
-<BrowserRouter  basename="/Interview-Schedulle-Calender">
+<BrowserRouter >
       <Routes>
         <Route path="/" element={<CalendarApp />} />
         <Route path="/meeting/:id" element={<MeetingPage />} />

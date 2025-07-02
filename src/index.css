@@ -1,37 +1,216 @@
-.more-meetings {
-  background-color: gold !important;
-  border-radius: 50%;
-  color: #333;
-  font-weight: bold;
-}
-.meeting-box {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-left: 4px solid goldenrod;
-  padding: 1rem;
-  margin: 1rem 0;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: inline-block;
-  margin: 10px
+.calendar-wrapper {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  color: #202124;
+  background: #fafafa;
+  padding: 1.5rem;
 }
 
-.meeting-box:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+.calendar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
-.meeting-box button {
-  margin-top: 0.5rem;
-  padding: 5px 10px;
-  background: goldenrod;
-  color: white;
+.calendar-nav,
+.calendar-tabs {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.calendar-nav button,
+.calendar-tabs button {
+  background: #1a73e8;
+  color: #fff;
   border: none;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.calendar-nav button:hover,
+.calendar-tabs button:hover {
+  background: #1669c1;
+  box-shadow: 0 2px 6px rgba(26,115,232,0.2);
+}
+
+.calendar-tabs button.active {
+  background: #0b57d0;
+  box-shadow: 0 2px 6px rgba(26,115,232,0.3);
+}
+
+.calendar-header {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+  border-bottom: 2px solid #dadce0;
+  margin-bottom: 5px;
+}
+
+.day-header {
+  text-align: center;
+  font-weight: 500;
+  font-size: 13px;
+  padding: 8px 0;
+  color: #3c4043;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+}
+
+.time-row {
+  display: contents;
+}
+
+.time-label {
+  text-align: right;
+  padding: 6px 8px;
+  font-size: 12px;
+  color: #5f6368;
+}
+
+.time-cell {
+  min-height: 42px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.time-cell:hover {
+  box-shadow: 0 1px 6px rgba(60,64,67,0.15);
+  border-color: #d2e3fc;
+}
+
+.meeting-card {
+  background: #e8f0fe;
+  border-left: 5px solid #1a73e8;
+  padding: 3px 8px;
+  font-size: 12px;
   border-radius: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.meeting-card:hover {
+  background: #d2e3fc;
+}
+
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.month-day {
+  border: 1px solid #e0e0e0;
+  min-height: 70px;
+  background: #fff;
+  padding: 5px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.month-day:hover {
+  box-shadow: 0 1px 6px rgba(60,64,67,0.15);
+  border-color: #d2e3fc;
+}
+
+.month-date {
+  font-size: 13px;
+  color: #5f6368;
+}
+
+.month-dots {
+  display: flex;
+  gap: 2px;
+  margin-top: auto;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background: #1a73e8;
+  border-radius: 50%;
+}
+
+.year-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.mini-month {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: #fff;
+  padding: 8px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.mini-month:hover {
+  box-shadow: 0 2px 6px rgba(60,64,67,0.15);
+  border-color: #d2e3fc;
+}
+
+.mini-header {
+  font-size: 13px;
+  font-weight: 500;
+  color: #3c4043;
+  margin-bottom: 4px;
+}
+
+.mini-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.mini-day-label {
+  font-size: 10px;
+  text-align: center;
+  color: #9aa0a6;
+}
+
+.mini-day {
+  font-size: 10px;
+  text-align: center;
+  padding: 2px 0;
+  border-radius: 4px;
+  cursor: default;
+  position: relative;
+}
+
+.mini-day.has-meeting {
+  background: #e8f0fe;
   cursor: pointer;
 }
 
-.meeting-box button:hover {
-  background: #c49200;
+.mini-day:hover.has-meeting {
+  background: #d2e3fc;
+}
+
+.mini-dot {
+  width: 4px;
+  height: 4px;
+  background: #1a73e8;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
 }

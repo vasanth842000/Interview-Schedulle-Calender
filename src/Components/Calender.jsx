@@ -150,9 +150,9 @@ export default function CalendarApp() {
                           className="meeting-card"
                           onClick={() =>
                             window.open(
-                              `/meeting/${m.id}`,
+                              `${import.meta.env.BASE_URL}meeting/${m.id}`,
                               "popup",
-                              "width=400,height=400"
+                              "width=400,height=400,top=100,left=100"
                             )
                           }
                         >
